@@ -2,6 +2,7 @@ library(shiny)
 library(ggplot2)
 library(DT)
 library(thematic)
+library(glue)
 data("diamonds")
 
 thematic_shiny(font = "auto")
@@ -45,17 +46,15 @@ ui <- fluidPage(
 
 server <- function(input, output) {
 
-    output$distPlot <- renderPlot({
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-        hist(x, breaks = bins, col = 'darkgray', border = 'white',
-             xlab = 'Waiting time to next eruption (in mins)',
-             main = 'Histogram of waiting times')
-    })
-    output$DiamandsTables <- renderDT({
-      diamonds |>
-        filter(height > input$taille) |>
-        filter(prix %in% input$prix)
+    output$DiamondPlot <- renderPlot({
+      diamonds |> 
+      filter(carat > input$taille) |>
+      filter(price %in% input$prix) |>
+      ggplot(aes(x= carat, y = price)) +
+      geom_point(color = ifelse(input$Couleur == "Oui", "pink", "black")) +
+        labs(
+          title = glue("prix : {input$prix} & color : {input$choix_couleur}")
+        )
     })
 }
 
