@@ -48,10 +48,11 @@ server <- function(input, output) {
 
     output$DiamondPlot <- renderPlot({
       diamonds |> 
-      filter(carat > input$taille) |>
-      filter(price %in% input$prix) |>
+      filter(price <= input$prix) |>
+      filter(color == input$choix_couleur) |>
       ggplot(aes(x= carat, y = price)) +
-      geom_point(color = ifelse(input$Couleur == "Oui", "pink", "black")) +
+      geom_point(color = ifelse(input$Couleur == "Oui", "pink", "black"),
+                 size = 1) +
         labs(
           title = glue("prix : {input$prix} & color : {input$choix_couleur}")
         )
