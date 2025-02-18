@@ -10,7 +10,7 @@ thematic_shiny(font = "auto")
 ui <- fluidPage(
     theme = bs_theme(version = 5,
                    bootswatch = "minty"),
-    titlePanel("Explorations des Diamants"),
+    h3("Explorations des Diamants"),
 
     sidebarLayout(
         sidebarPanel(
@@ -63,6 +63,9 @@ server <- function(input, output) {
         filter(color == input$choix_couleur) |>
         select(carat, cut, color, clarity, depth, table, price)
     })
+    observeEvent(input$boutton, { 
+      showNotification("prix : {input$prix} & color : {input$choix_couleur}", 
+                       type = "message") })
 }
 
 shinyApp(ui = ui, server = server)
