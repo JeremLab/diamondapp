@@ -13,12 +13,6 @@ ui <- fluidPage(
 
     sidebarLayout(
         sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
-        ),
         radioButtons(inputId = "Couleur",
                      label = "Colorier les points en rose ?",
                      choices = c("Oui","Non"),
@@ -35,6 +29,12 @@ ui <- fluidPage(
           selectize = TRUE,
           width = NULL,
           size = NULL
+        ),
+        sliderInput(inputId = "prix",
+                    label = "Prix maximum :",
+                    min = 300,
+                    max = 20000,
+                    value = 30)
         ),
         mainPanel(
            plotOutput("distPlot")
