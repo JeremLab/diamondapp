@@ -26,7 +26,16 @@ ui <- fluidPage(
                      inline = TRUE),
         actionButton(inputId = "boutton",
                      label = "Afficher une notification"),
-        
+        selectInput(
+          inputId = "choix_couleur",
+          choices = LETTERS[4:9],
+          label = "Choose the good gender for the character",
+          selected = NULL,
+          multiple = FALSE,
+          selectize = TRUE,
+          width = NULL,
+          size = NULL
+        ),
         mainPanel(
            plotOutput("distPlot")
         )
