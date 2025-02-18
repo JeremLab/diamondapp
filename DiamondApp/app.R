@@ -64,7 +64,7 @@ server <- function(input, output) {
         select(carat, cut, color, clarity, depth, table, price)
     })
     observeEvent(input$boutton, { 
-      showNotification("prix : {input$prix} & color : {input$choix_couleur}", 
+      showNotification(glue("prix: {input$prix} & color: {input$filtre_couleurs}"), 
                        type = "message") })
 }
 
