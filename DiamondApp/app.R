@@ -3,7 +3,6 @@ library(ggplot2)
 library(DT)
 library(thematic)
 data("diamonds")
-head(diamonds)
 
 thematic_shiny(font = "auto")
 
@@ -20,7 +19,14 @@ ui <- fluidPage(
                         max = 50,
                         value = 30)
         ),
-
+        radioButtons(inputId = "Couleur",
+                     label = "Colorier les points en rose ?",
+                     choices = c("Oui","Non"),
+                     selected = "Oui",
+                     inline = TRUE),
+        actionButton(inputId = "boutton",
+                     label = "Afficher une notification"),
+        
         mainPanel(
            plotOutput("distPlot")
         )
