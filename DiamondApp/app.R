@@ -37,7 +37,8 @@ ui <- fluidPage(
                      label = "Afficher une notification"),
         ),
         mainPanel(
-           plotOutput("distPlot")
+           plotOutput("DiamondPlot"),
+           DTOutput("Diamands_table")
         )
     )
 )
