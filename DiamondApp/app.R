@@ -38,7 +38,7 @@ ui <- fluidPage(
         ),
         mainPanel(
            plotOutput("DiamondPlot"),
-           DTOutput("Diamands_table")
+           DTOutput("DiamandsTable")
         )
     )
 )
@@ -51,6 +51,11 @@ server <- function(input, output) {
         hist(x, breaks = bins, col = 'darkgray', border = 'white',
              xlab = 'Waiting time to next eruption (in mins)',
              main = 'Histogram of waiting times')
+    })
+    output$DiamandsTables <- renderDT({
+      diamonds |>
+        filter(height > input$taille) |>
+        filter(prix %in% input$prix)
     })
 }
 
