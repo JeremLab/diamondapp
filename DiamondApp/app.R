@@ -18,12 +18,10 @@ ui <- fluidPage(
                      choices = c("Oui","Non"),
                      selected = "Oui",
                      inline = TRUE),
-        actionButton(inputId = "boutton",
-                     label = "Afficher une notification"),
         selectInput(
           inputId = "choix_couleur",
-          choices = LETTERS[4:9],
-          label = "Choose the good gender for the character",
+          choices = LETTERS[4:10],
+          label = "Choisir une couleur à filtrer :",
           selected = NULL,
           multiple = FALSE,
           selectize = TRUE,
@@ -34,7 +32,9 @@ ui <- fluidPage(
                     label = "Prix maximum :",
                     min = 300,
                     max = 20000,
-                    value = 30)
+                    value = 30),
+        actionButton(inputId = "boutton",
+                     label = "Afficher une notification"),
         ),
         mainPanel(
            plotOutput("distPlot")
