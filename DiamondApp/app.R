@@ -57,6 +57,12 @@ server <- function(input, output) {
           title = glue("prix : {input$prix} & color : {input$choix_couleur}")
         )
     })
+    output$DiamandsTable <- renderDT({
+      diamonds |>
+        filter(price <= input$prix) |>
+        filter(color == input$choix_couleur) |>
+        select(carat, cut, color, clarity, depth, table, price)
+    })
 }
 
 shinyApp(ui = ui, server = server)
