@@ -35,7 +35,7 @@ ui <- fluidPage(
                     label = "Prix maximum :",
                     min = 300,
                     max = 20000,
-                    value = 300),
+                    value = 5000),
         actionButton(inputId = "boutton",
                      label = "Afficher une notification"),
         ),
