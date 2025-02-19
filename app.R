@@ -23,7 +23,7 @@ ui <- fluidPage(
                      inline = TRUE),
         selectInput(
           inputId = "choix_couleur",
-          choices = unique(diamonds$color),
+          choices = sort(unique(diamonds$color)),
           label = "Choisir une couleur à filtrer :",
           selected = NULL,
           multiple = FALSE,
