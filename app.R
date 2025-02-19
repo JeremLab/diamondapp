@@ -1,8 +1,10 @@
 library(shiny)
 library(ggplot2)
 library(DT)
+library(bslib)
 library(thematic)
 library(glue)
+library(dplyr)
 data("diamonds")
 
 thematic_shiny(font = "auto")
@@ -21,7 +23,7 @@ ui <- fluidPage(
                      inline = TRUE),
         selectInput(
           inputId = "choix_couleur",
-          choices = LETTERS[4:10],
+          choices = unique(diamonds$color),
           label = "Choisir une couleur à filtrer :",
           selected = NULL,
           multiple = FALSE,
@@ -33,7 +35,7 @@ ui <- fluidPage(
                     label = "Prix maximum :",
                     min = 300,
                     max = 20000,
-                    value = 30),
+                    value = 300),
         actionButton(inputId = "boutton",
                      label = "Afficher une notification"),
         ),
